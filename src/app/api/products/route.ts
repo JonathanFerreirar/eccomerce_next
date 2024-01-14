@@ -1,7 +1,5 @@
+import data from './data.json'
+
 export async function GET() {
-  return Response.json({
-    data: {
-      name: 'Jonathan',
-    },
-  })
+  return Response.json(data.products)
 }
