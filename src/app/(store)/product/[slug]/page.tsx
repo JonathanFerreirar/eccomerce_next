@@ -9,6 +9,14 @@ interface ProductProps {
     slug: string
   }
 }
+export async function generateMetadata({
+  params,
+}: ProductProps): Promise<Metadata> {
+  const product = await getProduct(params.slug)
+  return Promise.resolve({
+    title: product.title,
+  })
+}
 
 async function getProduct(slug: string): Promise<Product> {
   const response = await api(`/products/${slug}`, {
@@ -20,12 +28,12 @@ async function getProduct(slug: string): Promise<Product> {
   return products
 }
 
-export async function generateMetadata({
-  params,
-}: ProductProps): Promise<Metadata> {
-  const product = await getProduct(params.slug)
-  return Promise.resolve({
-    title: product.title,
+export async function generateStaticParams() {
+  const response = await api('/products/featured')
+  const products: Product[] = await response.json()
+
+  return products.map((product) => {
+    return { slug: product.slug }
   })
 }
 
