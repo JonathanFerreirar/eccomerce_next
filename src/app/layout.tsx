@@ -5,7 +5,10 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  title: 'Dev Store',
+  title: {
+    template: '%s | Dev Store',
+    default: 'Dev Store',
+  },
   description:
     'This is Store app, created by Jonathan Rodrigo, his popurew just enhanced my skills as a developer',
 }
