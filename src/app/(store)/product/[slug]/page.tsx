@@ -1,3 +1,4 @@
+import AddToCarButton from '@/components/addToCarButton'
 import { api } from '@/data/api'
 import { Product } from '@/data/types/products'
 import { Metadata } from 'next'
@@ -103,12 +104,7 @@ const ProductPage = async ({ params }: ProductProps) => {
             </button>
           </div>
         </div>
-        <button
-          type="button"
-          className="mt-8 fle h-12 items-center justify-center rounded-full bg-emerald-600 font-semibold text-white"
-        >
-          Adicionar ao carrinho
-        </button>
+        <AddToCarButton productId={product.price} />
       </div>
     </div>
   )
